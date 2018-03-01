@@ -90,7 +90,7 @@ rosrun packageName white_yellow_lane_follower_sim.py
 
 ## Project Description
 The steps for Lane Following are as follows:
-* Convert input image into desired perspective transdormation
+* Convert input image into desired perspective transformation
 * Convert into Grayscale(for detecting white) and HSV(for yellow)
 * Form a mask with binary threshlod to extract ROI for white or yellow line
 * Apply morphological operator to get rid of noise
