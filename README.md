@@ -1,5 +1,5 @@
 # Project : Line-Lane-Follower-Robot Using ROS-Kobuki-Turtlebot
-The project is done at University of Alberta (UoA) for the course CMPUT 412 : Experimental Robotics.
+The project is done at University of Alberta (UoA) for the course CMPUT 412: Experimental Robotics.
 
 ## Overview
 The robot detects and follows a line/lane with RGB camera.
@@ -44,7 +44,7 @@ rosrun packageName rosbag_play.py bagFileName.bag /Folderlocation/ camera/rgb/im
 
 ### Perspective Calibration
 
-The perpective transform turns the input image into a top view image so that the lines on either side is more seperable.We can run pers_calibration.py and it needs 4 locations to be transformed into 4 target locations and pass it to getPerspectiveTransform() function of opencv.It will return as a homography matrix whcih we shall multiply to transform all the input images to get the birds eye view of the track.
+The perpective transform turns the input image into a top view image so that the lines on either side is more separable. We can run pers_calibration.py and it needs 4 coordinates to be transformed into 4 target locations and passes it to getPerspectiveTransform() function in opencv. It will then return a homography matrix which we multiply our image with to transform all the input images to get the birds eye view of the track.
 
 <div align="center">
   <img src ="img_src/im5.png" width ="200"> <img src ="img_src/im5_pers.jpeg" width ="200"> <img src ="img_src/im4.png" width ="200"> <img src ="img_src/im4_pers.jpeg" width ="200">
@@ -92,11 +92,11 @@ rosrun packageName white_yellow_lane_follower_sim.py
 The steps for Lane Following are as follows:
 * Convert input image into desired perspective transformation
 * Convert into Grayscale(for detecting white) and HSV(for yellow)
-* Form a mask with binary threshlod to extract ROI for white or yellow line
+* Form a mask with binary threshold to extract ROI for white or yellow line
 * Apply morphological operator to get rid of noise
 * Crop and extract a rectangular region as ROI.
 * Find the moment of the region
-* Declare robots location as an offset from the point of moment (we followed the right line, so offset was a distance on the left of the moment)
+* Declare robot location as an offset from the point of moment (we followed the right line, so offset was a distance on the left of the moment)
 * Calculate error based on differnce between half the image width and robot's location.
 * Run PD over the error to get angular z with a constant linear velocity x
 * Repeat all the steps
@@ -123,15 +123,15 @@ For line following we can find the error with the moment directly.
 </div>
 
 ## Discussion
-If the robots somehow turns towards left line , it follows the track in backward direction.Sometimes it misses the line on a very sharp turn as it vanishes from the robot's view.The method also relies on the camera setting and also prone to lighting condition where the thresholds are required tuning.Our robot did well in the competition and finished quite earlier than most of the robots. It also had a penalty as per rule of competition when the body went outside the track at a sharp corner.
+If the robot somehow turns towards the left line , it follows the track in backward direction. Sometimes it misses the line on a very sharp turn as it vanishes from the robot's view. The method also relies on the camera setting and also prone to lighting conditions where the thresholds require tuning. Our finish time on the track was 24 seconds (see video below). It also had a penalty as per the competition rule when the robot body went outside the track at a sharp corner.
 
 ## Future Work
-Variable linear motion can be used instead of fixed linear motion which will help in turning. Also path planning ahead of turn might help reduce the the linear speed adjust turning speed for smooth motion.
+Variable linear motion can be used instead of fixed linear motion which will help in turning. Also path planning ahead of the turn might help reduce the the linear speed and adjust turning speed for smoother motion.
 
 ## Authors
 
 * [Nazmus Sakib](https://github.com/nsa31)
-* **Vivian**
+* **Vivian Ting**
 ## Acknowledgement 
 
 * [Programming Robots with ROS](https://github.com/osrf/rosbook/blob/master)
