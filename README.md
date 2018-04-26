@@ -131,7 +131,7 @@ Variable linear motion can be used instead of fixed linear motion which will hel
 ## Authors
 
 * [Nazmus Sakib](https://github.com/nsa31)
-* **Vivian Ting**
+* [Vivian Ting](https://github.com/jtuoa)
 ## Acknowledgement 
 
 * [Programming Robots with ROS](https://github.com/osrf/rosbook/blob/master)
